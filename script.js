@@ -8,7 +8,7 @@
   var root = document.documentElement;
 
   /* ---------- Theme toggle (persisted, respects OS preference) ---------- */
-  var THEME_KEY = "momo-theme";
+  var THEME_KEY = "mohammed-site-theme";
   var toggle = document.getElementById("themeToggle");
 
   function applyTheme(theme) {

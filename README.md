@@ -1,86 +1,66 @@
-# Mohammed “Momo” Alsouri — personal site
+# Mohammed Alsouri - personal site
 
-A clean, static personal website. No build step, no framework, no backend —
-just `index.html`, `styles.css`, and `script.js`. Built to host on GitHub Pages.
+A static personal website for applications and project proof. No build step, no framework, no backend.
 
 ```
 omgbroops/
-├── index.html              # all page content
-├── styles.css              # all styling (warm-minimal theme, light + dark)
-├── script.js               # theme toggle, mobile menu, scroll reveals
-├── .nojekyll               # tells GitHub Pages to serve files as-is
+├── index.html
+├── styles.css
+├── script.js
+├── .nojekyll
 ├── assets/
-│   ├── favicon.svg         # the little "M" tab icon
-│   └── placeholders/       # notes on swapping in real images
-└── README.md               # you are here
+│   ├── favicon.svg
+│   └── placeholders/
+└── README.md
 ```
 
 ## Preview locally
 
-It’s plain static files, so any of these work:
+Open `index.html` directly, or run a small server from this folder:
 
 ```bash
-# Option A — just open it
-#   double-click index.html
-
-# Option B — a tiny local server (nicer; smooth scrolling + correct paths)
-python -m http.server 8000      # then open http://localhost:8000
-# or
-npx serve .
+python -m http.server 8000
 ```
+
+Then open `http://localhost:8000`.
 
 ## Deploy to GitHub Pages
 
-This repo is named `omgbroops`, so it publishes as a **project site** at
-`https://omgbroops.github.io/omgbroops/`.
+This repo publishes as a project site at:
 
-1. Commit and push to the `main` branch.
-2. On GitHub: **Settings → Pages**.
-3. Under **Build and deployment → Source**, choose **Deploy from a branch**.
-4. Branch: `main`, folder: `/ (root)`. Save.
-5. Wait ~1 minute, then visit the URL shown on that Pages settings screen.
+`https://omgbroops.github.io/omgbroops/`
 
-> Want the cleaner URL `https://omgbroops.github.io/` (no `/omgbroops`)?
-> Rename the repo to `omgbroops.github.io`. All links here are relative, so
-> nothing in the code needs to change.
+1. Commit and push to `main`.
+2. On GitHub, open `Settings -> Pages`.
+3. Choose `Deploy from a branch`.
+4. Branch: `main`, folder: `/ (root)`.
+5. Save and wait for GitHub Pages to publish.
 
-## What to customize
+## Links currently used
 
-All edits are in **`index.html`** — search for the `EDIT ME` comments. The main ones:
-
-| What                | Where (search in `index.html`)        | Currently set to                         |
-|---------------------|----------------------------------------|------------------------------------------|
-| GitHub link         | `EDIT ME: your GitHub profile`         | `https://github.com/omgbroops`           |
-| Email               | `mailto:`                              | `adam.zahaan@gmail.com`                  |
-| Instagram (calculus)| `idislikelhopital`                     | `https://instagram.com/idislikelhopital` |
-| Polyshield link     | `EDIT ME: live Polyshield link`        | `https://polyshield.vercel.app/`         |
-| JSwingX repo        | `EDIT ME: GitHub repo for JSwingX`     | `https://github.com/omgbroops/JSwingX`   |
-| LinkedIn / X        | commented-out block in Contact section | *(add when ready)*                       |
-| Page title / meta   | top of `<head>`                        | name + short description                 |
+| Item | URL |
+| --- | --- |
+| Email | `mailto:maofficial2009@gmail.com` |
+| GitHub | `https://github.com/omgbroops` |
+| Polyshield | `https://polyshield.vercel.app/` |
+| CareCompass | `https://carecompassonline.org/` |
+| Calculus Instagram | `https://instagram.com/idislikelhopital` |
+| JSwingX | `https://github.com/omgbroops/JSwingX` |
+| BetterLyrics | `https://github.com/omgbroops/BetterLyrics` |
+| Mathify | `https://github.com/omgbroops/mathify` |
 
 ## Adding images
 
-Every grey dashed box is a placeholder. To replace one, find it in `index.html`
-(they look like `<div class="ph" data-label="…">`) and swap it for an `<img>`.
-Full instructions and a section-by-section image list are in
-[`assets/placeholders/README.md`](assets/placeholders/README.md).
+The site already has image slots. Add files under `assets/` with these names:
 
-## Editing content
+| Slot | File |
+| --- | --- |
+| Polyshield | `assets/polyshield-dashboard.png` |
+| CareCompass | `assets/carecompass.png` |
+| JSwingX | `assets/jswingx-ui.png` |
+| BetterLyrics | `assets/betterlyrics.png` |
+| Indie games | `assets/game-screenshot.png` |
+| Pumps & Pipes | `assets/pumps-pipes.png` |
+| Social preview | `assets/og-image.png` |
 
-- **Projects** live in the `#work` section, one `<article>` each. Copy an
-  existing block to add a new project, or delete one you don’t want.
-- **Timeline** entries are `<li class="timeline__item">` blocks.
-- **Notes** are placeholder cards. To turn one into a real post, create e.g.
-  `notes/my-post.html` and link the card’s title to it.
-- **Colors / spacing / fonts** are all CSS variables at the top of `styles.css`
-  (`:root { … }`). Change `--accent` to retheme the whole site in one place.
-
-## Notes
-
-- **Dark mode** is automatic (follows your OS) with a manual toggle in the nav;
-  the choice is remembered. Remove the `#themeToggle` button in `index.html` to
-  drop it.
-- **Fonts** load from Google Fonts (Fraunces + Inter). Delete the three font
-  `<link>` tags in `<head>` to go fully offline — the CSS falls back to a clean
-  system stack.
-- Everything works without JavaScript; `script.js` only adds polish.
+Recommended image size: 1600px wide for screenshots/photos. For `assets/og-image.png`, use `1200 x 630` and then uncomment the `og:image` meta tag in `index.html`.

@@ -1,40 +1,17 @@
-# Image placeholders
+# Image slots
 
-Drop your real images anywhere under `assets/` (this folder is just a convenient home).
-The site ships with styled placeholder boxes so it looks finished before you add anything.
+The page already points at real image paths. If a file is missing, the browser shows a clean placeholder with instructions.
 
-## How to swap a placeholder for a real image
+Add these files under `assets/`:
 
-In `index.html`, find a placeholder like this:
+| Section | File |
+| --- | --- |
+| Polyshield | `polyshield-dashboard.png` |
+| CareCompass | `carecompass.png` |
+| JSwingX | `jswingx-ui.png` |
+| BetterLyrics | `betterlyrics.png` |
+| Indie games | `game-screenshot.png` |
+| Pumps & Pipes | `pumps-pipes.png` |
+| Social preview | `og-image.png` |
 
-```html
-<div class="ph ph--wide" data-label="Website / app screenshot" aria-hidden="true"></div>
-```
-
-Replace the whole `<div>` with an `<img>`:
-
-```html
-<img src="assets/carecompass-app.png" alt="CareCompass event sign-up screen" />
-```
-
-Always write a short, descriptive `alt` text (it’s read aloud by screen readers and
-shown if the image fails to load).
-
-## Suggested images to add (by section)
-
-| Section            | Placeholder labels                                         |
-|--------------------|------------------------------------------------------------|
-| Hero               | Portrait / workspace photo / project collage               |
-| Polyshield         | Dashboard screenshot · Approval / demo GIF                 |
-| CareCompass        | Website/app screenshot · Care package photo · Outreach photo |
-| JSwingX            | Example interface · UI component · Code snippet            |
-| Indie Games        | Game screenshot · In-game UI · 3D asset / render           |
-| Pumps & Pipes      | Team/car photo · Circuit photo · Reaction→sensor→motor diagram |
-| Other Builds       | Small 16:9 thumbnail per card                              |
-
-## Recommended formats / sizes
-
-- Screenshots & photos: `.webp` or `.jpg`, ~1600px on the long edge.
-- Wide media (`.ph--wide`): aim for a 16:9 crop.
-- Social preview (`assets/og-image.png`): 1200×630, then uncomment the
-  `og:image` line in `index.html`.
+Use `.png`, `.jpg`, or `.webp`. Screenshots/photos around 1600px wide are plenty. The social preview should be `1200 x 630`.
