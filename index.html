@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,9 +13,12 @@
   <meta property="og:type" content="profile" />
   <!-- Add assets/og-image.png later for link previews. Recommended size: 1200 x 630. -->
 
-  <meta name="theme-color" content="#f7f7f4" />
+  <meta name="theme-color" content="#080907" />
 
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;450;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 
@@ -27,7 +30,7 @@
       <nav class="nav__links" aria-label="Primary">
         <a href="#work">Work</a>
         <a href="#impact">Impact</a>
-        <a href="#math">Math</a>
+        <a href="#engineering">Engineering</a>
         <a href="#timeline">Timeline</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -47,7 +50,7 @@
     <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile">
       <a href="#work">Work</a>
       <a href="#impact">Impact</a>
-      <a href="#math">Math</a>
+      <a href="#engineering">Engineering</a>
       <a href="#timeline">Timeline</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -57,10 +60,10 @@
     <section class="hero">
       <div class="container hero__inner">
         <div class="hero__text reveal">
-          <p class="hero__role">Student builder working on agent safety, community software, UI systems, games, and math education.</p>
+          <p class="hero__role">Student builder working on agent safety, community software, UI systems, games, and engineering.</p>
           <h1>Mohammed Alsouri</h1>
           <p class="hero__lede">
-            I build across the stack when a problem is interesting enough: local MCP infrastructure for AI coding agents, an Expo care platform for a community nonprofit, Java UI tooling, browser extensions, games, and math explanations. My projects are scattered because I follow the hard parts until they turn into working software.
+            I build across the stack when a problem is interesting enough: local MCP infrastructure for AI coding agents, an Expo care platform for a community nonprofit, Java UI tooling, games, electronics projects, and math explanations. My projects are scattered because I follow the hard parts until they turn into working software.
           </p>
           <div class="hero__actions">
             <a class="btn btn--primary" href="#work">Read the work</a>
@@ -147,29 +150,6 @@
           </figure>
         </article>
 
-        <article class="project reveal" id="betterlyrics">
-          <div class="project__body">
-            <p class="project__type">Browser extension</p>
-            <h3>BetterLyrics</h3>
-            <p class="project__subtitle">Synced lyrics and cleaner music UI for Spotify Web.</p>
-            <p>
-              BetterLyrics is a Chrome extension that brings a Beautiful/Spicy Lyrics-style experience to Spotify Web. It works in a Chrome-only mode and can optionally connect to a Spicetify companion bridge for stronger token access.
-            </p>
-            <ul class="evidence-list">
-              <li>Integrated multiple lyrics providers with fallback order for synced, syllable, line, static, and plain lyrics.</li>
-              <li>Built a companion bridge mode without making it required for the main extension.</li>
-              <li>Added debug helpers and logging that avoid leaking full access tokens or bridge keys.</li>
-            </ul>
-            <div class="project__links">
-              <a class="link-arrow" href="https://github.com/omgbroops/BetterLyrics" target="_blank" rel="noopener">View on GitHub</a>
-            </div>
-          </div>
-          <figure class="project__media">
-            <img src="assets/betterlyrics.png" alt="BetterLyrics Spotify extension screenshot" onerror="this.closest('figure').classList.add('is-missing')" />
-            <figcaption>Drop a screenshot at assets/betterlyrics.png.</figcaption>
-          </figure>
-        </article>
-
         <article class="project reveal" id="games">
           <div class="project__body">
             <p class="project__type">Game development</p>
@@ -181,7 +161,7 @@
             <ul class="evidence-list">
               <li>Built prototypes and playable projects across scripting, UI, and 3D workflows.</li>
               <li>One game reached around 6,000 visits.</li>
-              <li>Carried lessons from game UI into JSwingX, BetterLyrics, and product interfaces.</li>
+              <li>Carried lessons from game UI into JSwingX, product interfaces, and faster prototyping.</li>
             </ul>
           </div>
           <figure class="project__media">
@@ -224,50 +204,30 @@
           </figure>
         </article>
 
-        <article class="project reveal" id="pumps-pipes">
-          <div class="project__body">
-            <p class="project__type">Engineering competition</p>
-            <h3>Pumps &amp; Pipes</h3>
-            <p class="project__subtitle">Grand Winner for an RC ChemE car combining chemistry, electronics, and robotics.</p>
-            <p>
-              My team built a ChemE car with an iodine clock reaction tied into a light-detection circuit and motor control. I worked on electronics, programming, motors, sensors, and debugging the integration between chemistry, hardware, and code.
-            </p>
-            <ul class="evidence-list">
-              <li>Used a visual chemical reaction as part of the stopping mechanism.</li>
-              <li>Connected photoresistor/light detection to microcontroller-driven motor behavior.</li>
-              <li>Iterated under competition pressure across hardware and software failure modes.</li>
-            </ul>
-          </div>
-          <figure class="project__media">
-            <img src="assets/pumps-pipes.png" alt="Pumps and Pipes ChemE car or team photo" onerror="this.closest('figure').classList.add('is-missing')" />
-            <figcaption>Drop a competition photo at assets/pumps-pipes.png.</figcaption>
-          </figure>
-        </article>
       </div>
     </section>
 
-    <section class="section" id="math">
+    <section class="section" id="engineering">
       <div class="container">
         <header class="section__head reveal">
-          <h2>Math And Teaching</h2>
-          <p>I like explaining calculus because it turns motion, change, area, and accumulation into something you can reason about.</p>
+          <h2>Math / Engineering</h2>
+          <p>Some of my best work comes from crossing software with math, chemistry, electronics, and explanation.</p>
         </header>
 
-        <div class="math-grid">
+        <div class="split-grid">
           <article class="text-card reveal">
-            <h3>Calculus Instagram Channel</h3>
+            <h3>I Dislike L'Hopital</h3>
             <p>
-              I use Instagram for short calculus explanations, examples, and math intuition. This is the right place for the Instagram link: it is a teaching channel, not a personal contact method.
+              I run a calculus-focused Instagram where I post short explanations, examples, and intuition for limits, derivatives, integrals, and the parts of math that usually get taught too mechanically.
             </p>
             <a class="link-arrow" href="https://instagram.com/idislikelhopital" target="_blank" rel="noopener">@idislikelhopital</a>
           </article>
 
           <article class="text-card reveal">
-            <h3>Mathify</h3>
+            <h3>Pumps &amp; Pipes</h3>
             <p>
-              Mathify is a React and Vite app for student labs, Supabase auth, assignment workflows, grades, feedback, and admin dashboards. It is part teaching tool, part classroom operations software.
+              Grand Winner for an RC ChemE car combining chemistry, electronics, and robotics. My team used an iodine clock reaction as part of the stopping mechanism, then connected light detection to microcontroller-driven motor control.
             </p>
-            <a class="link-arrow" href="https://github.com/omgbroops/mathify" target="_blank" rel="noopener">View repo</a>
           </article>
         </div>
       </div>
@@ -292,7 +252,7 @@
             <div class="timeline__year">2023-2025</div>
             <div class="timeline__content">
               <h3>Moved Into Tools</h3>
-              <p>Built Java UI systems, browser extensions, bots, dashboards, and automation projects.</p>
+              <p>Built Java UI systems, bots, dashboards, and automation projects.</p>
             </div>
           </li>
           <li class="timeline__item reveal">

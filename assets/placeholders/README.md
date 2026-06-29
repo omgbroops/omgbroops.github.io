@@ -9,7 +9,6 @@ Add these files under `assets/`:
 | Polyshield | `polyshield-dashboard.png` |
 | CareCompass | `carecompass.png` |
 | JSwingX | `jswingx-ui.png` |
-| BetterLyrics | `betterlyrics.png` |
 | Indie games | `game-screenshot.png` |
 | Pumps & Pipes | `pumps-pipes.png` |
 | Social preview | `og-image.png` |

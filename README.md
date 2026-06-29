@@ -46,8 +46,6 @@ This repo publishes as a project site at:
 | CareCompass | `https://carecompassonline.org/` |
 | Calculus Instagram | `https://instagram.com/idislikelhopital` |
 | JSwingX | `https://github.com/omgbroops/JSwingX` |
-| BetterLyrics | `https://github.com/omgbroops/BetterLyrics` |
-| Mathify | `https://github.com/omgbroops/mathify` |
 
 ## Adding images
 
@@ -58,7 +56,6 @@ The site already has image slots. Add files under `assets/` with these names:
 | Polyshield | `assets/polyshield-dashboard.png` |
 | CareCompass | `assets/carecompass.png` |
 | JSwingX | `assets/jswingx-ui.png` |
-| BetterLyrics | `assets/betterlyrics.png` |
 | Indie games | `assets/game-screenshot.png` |
 | Pumps & Pipes | `assets/pumps-pipes.png` |
 | Social preview | `assets/og-image.png` |
