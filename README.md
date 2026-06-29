@@ -46,6 +46,7 @@ This repo publishes as a project site at:
 | CareCompass | `https://carecompassonline.org/` |
 | Calculus Instagram | `https://instagram.com/idislikelhopital` |
 | JSwingX | `https://github.com/omgbroops/JSwingX` |
+| Article | `articles/agent-permissions.html` |
 
 ## Adding images
 
@@ -53,6 +54,7 @@ The site already has image slots. Add files under `assets/` with these names:
 
 | Slot | File |
 | --- | --- |
+| Portrait | `assets/portrait.jpg` |
 | Polyshield | `assets/polyshield-dashboard.png` |
 | CareCompass | `assets/carecompass.png` |
 | JSwingX | `assets/jswingx-ui.png` |

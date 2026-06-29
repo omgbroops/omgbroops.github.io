@@ -22,8 +22,6 @@
   try { stored = localStorage.getItem(THEME_KEY); } catch (e) {}
   if (stored === "light" || stored === "dark") {
     applyTheme(stored);
-  } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
-    applyTheme("dark");
   }
 
   if (toggle) {

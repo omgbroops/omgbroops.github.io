@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,12 +13,12 @@
   <meta property="og:type" content="profile" />
   <!-- Add assets/og-image.png later for link previews. Recommended size: 1200 x 630. -->
 
-  <meta name="theme-color" content="#080907" />
+  <meta name="theme-color" content="#f8f7ff" />
 
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;450;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;450;500;600;700;800&family=Geist+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 
@@ -31,6 +31,7 @@
         <a href="#work">Work</a>
         <a href="#impact">Impact</a>
         <a href="#engineering">Engineering</a>
+        <a href="#articles">Articles</a>
         <a href="#timeline">Timeline</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -51,6 +52,7 @@
       <a href="#work">Work</a>
       <a href="#impact">Impact</a>
       <a href="#engineering">Engineering</a>
+      <a href="#articles">Articles</a>
       <a href="#timeline">Timeline</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -61,7 +63,12 @@
       <div class="container hero__inner">
         <div class="hero__text reveal">
           <p class="hero__role">Student builder working on agent safety, community software, UI systems, games, and engineering.</p>
-          <h1>Mohammed Alsouri</h1>
+          <div class="hero__identity">
+            <h1>Mohammed Alsouri</h1>
+            <figure class="portrait-frame">
+              <img src="assets/portrait.jpg" alt="Portrait of Mohammed Alsouri" onerror="this.closest('figure').classList.add('is-missing')" />
+            </figure>
+          </div>
           <p class="hero__lede">
             I build across the stack when a problem is interesting enough: local MCP infrastructure for AI coding agents, an Expo care platform for a community nonprofit, Java UI tooling, games, electronics projects, and math explanations. My projects are scattered because I follow the hard parts until they turn into working software.
           </p>
@@ -72,24 +79,24 @@
           </div>
         </div>
 
-        <aside class="proof reveal" aria-label="Quick proof points">
-          <dl class="proof__grid">
-            <div>
-              <dt>Main focus</dt>
-              <dd>AI agent safety and local tool control</dd>
-            </div>
-            <div>
-              <dt>Current build</dt>
-              <dd>Polyshield gateway and local MCP runner</dd>
-            </div>
-            <div>
-              <dt>Community work</dt>
-              <dd>CareCompass website, app, outreach, and volunteer workflows</dd>
-            </div>
-            <div>
-              <dt>Long arc</dt>
-              <dd>Five years of self-directed games, tools, and interfaces</dd>
-            </div>
+        <aside class="hero-panel reveal" aria-label="Current build">
+          <div class="panel-chrome">
+            <span></span><span></span><span></span>
+          </div>
+          <pre><code>agent.request({
+  tool: "filesystem.write",
+  target: "~/repo",
+  risk: "destructive"
+})
+
+polyshield.evaluate({
+  policy: "human approval",
+  sandbox: "scoped runner",
+  audit: true
+})</code></pre>
+          <dl class="panel-proof">
+            <div><dt>Focus</dt><dd>AI agents with permissions</dd></div>
+            <div><dt>Build</dt><dd>MCP gateway + local runner</dd></div>
           </dl>
         </aside>
       </div>
@@ -123,7 +130,6 @@
           </div>
           <figure class="project__media">
             <img src="assets/polyshield-dashboard.png" alt="Polyshield dashboard screenshot" onerror="this.closest('figure').classList.add('is-missing')" />
-            <figcaption>Drop a screenshot at assets/polyshield-dashboard.png to replace this placeholder.</figcaption>
           </figure>
         </article>
 
@@ -146,7 +152,6 @@
           </div>
           <figure class="project__media">
             <img src="assets/jswingx-ui.png" alt="JSwingX interface screenshot" onerror="this.closest('figure').classList.add('is-missing')" />
-            <figcaption>Drop a screenshot at assets/jswingx-ui.png.</figcaption>
           </figure>
         </article>
 
@@ -166,7 +171,6 @@
           </div>
           <figure class="project__media">
             <img src="assets/game-screenshot.png" alt="Indie game screenshot" onerror="this.closest('figure').classList.add('is-missing')" />
-            <figcaption>Drop a screenshot at assets/game-screenshot.png.</figcaption>
           </figure>
         </article>
       </div>
@@ -200,7 +204,6 @@
           </div>
           <figure class="project__media">
             <img src="assets/carecompass.png" alt="CareCompass website or app screenshot" onerror="this.closest('figure').classList.add('is-missing')" />
-            <figcaption>Drop a screenshot at assets/carecompass.png.</figcaption>
           </figure>
         </article>
 
@@ -226,10 +229,35 @@
           <article class="text-card reveal">
             <h3>Pumps &amp; Pipes</h3>
             <p>
-              Grand Winner for an RC ChemE car combining chemistry, electronics, and robotics. My team used an iodine clock reaction as part of the stopping mechanism, then connected light detection to microcontroller-driven motor control.
+              Grand Winner for an RC ChemE car combining chemistry, electronics, and robotics. My team built a vehicle that used an iodine clock reaction as part of its stopping mechanism: once the reaction changed visually, a photoresistor/light-detection circuit picked up the change and fed the control system that stopped the motors.
             </p>
+            <ul class="evidence-list">
+              <li>Worked on the electronics, programming, motors, sensors, and debugging.</li>
+              <li>Integrated chemistry, hardware, and code under competition constraints.</li>
+              <li>Iterated through noisy sensor readings, timing uncertainty, and mechanical reliability issues.</li>
+            </ul>
           </article>
         </div>
+      </div>
+    </section>
+
+    <section class="section section--articles" id="articles">
+      <div class="container">
+        <header class="section__head reveal">
+          <h2>Articles</h2>
+          <p>Technical writing around the problems I am building toward.</p>
+        </header>
+
+        <article class="article-card reveal">
+          <div>
+            <p class="project__type">Agent safety / MCP / local tools</p>
+            <h3>AI Coding Agents Need Permission Systems Before They Can Be Trusted With Local Tools</h3>
+            <p>
+              A long technical essay on why coding agents need policy engines, approval queues, scoped runners, audit logs, and recoverable execution before they become reliable operators on real machines.
+            </p>
+          </div>
+          <a class="btn btn--primary" href="articles/agent-permissions.html">Read article</a>
+        </article>
       </div>
     </section>
 
@@ -297,7 +325,7 @@
   <footer class="footer">
     <div class="container footer__inner">
       <span>Mohammed Alsouri</span>
-      <span>Static site for projects, writing, and applications.</span>
+      <a href="mailto:maofficial2009@gmail.com">maofficial2009@gmail.com</a>
     </div>
   </footer>
 

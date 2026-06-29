@@ -6,6 +6,7 @@ Add these files under `assets/`:
 
 | Section | File |
 | --- | --- |
+| Portrait | `portrait.jpg` |
 | Polyshield | `polyshield-dashboard.png` |
 | CareCompass | `carecompass.png` |
 | JSwingX | `jswingx-ui.png` |

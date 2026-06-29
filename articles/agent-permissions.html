@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>AI Coding Agents Need Permission Systems - Mohammed Alsouri</title>
+  <meta name="description" content="A technical essay on why AI coding agents need permission systems, policy engines, approval queues, scoped runners, audit logs, and recovery before they can safely operate local tools." />
+  <meta name="author" content="Mohammed Alsouri" />
+  <meta name="theme-color" content="#f8f7ff" />
+
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;450;500;600;700;800&family=Geist+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="nav" id="top">
+    <div class="container nav__inner">
+      <nav class="nav__links" aria-label="Primary">
+        <a href="../index.html#work">Work</a>
+        <a href="../index.html#impact">Impact</a>
+        <a href="../index.html#engineering">Engineering</a>
+        <a href="../index.html#articles">Articles</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+
+      <div class="nav__actions">
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle color theme" title="Toggle theme">
+          <svg class="theme-toggle__sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><g stroke-linecap="round"><line x1="12" y1="2.5" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="21.5"/><line x1="2.5" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="21.5" y2="12"/><line x1="5.1" y1="5.1" x2="6.9" y2="6.9"/><line x1="17.1" y1="17.1" x2="18.9" y2="18.9"/><line x1="18.9" y1="5.1" x2="17.1" y2="6.9"/><line x1="6.9" y1="17.1" x2="5.1" y2="18.9"/></g></svg>
+          <svg class="theme-toggle__moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M20 14.2A8 8 0 1 1 9.8 4 6.4 6.4 0 0 0 20 14.2Z"/></svg>
+        </button>
+        <a class="nav__contact" href="../index.html">Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="article-shell">
+    <div class="container">
+      <header class="article-hero reveal">
+        <p class="article-kicker">Agent safety / MCP / local tools</p>
+        <h1 class="article-title">AI Coding Agents Need Permission Systems</h1>
+        <p class="article-dek">
+          Coding agents are moving from autocomplete to local operators. They can read repositories, edit files, run tests, use browsers, call databases, and connect to tool servers. The next bottleneck is not model intelligence. It is control: what exactly is the agent allowed to do, who approved it, what changed, and how do we undo it when the agent is wrong?
+        </p>
+        <div class="article-meta">
+          <span>By Mohammed Alsouri</span>
+          <span>Longform technical essay</span>
+          <span>Updated June 2026</span>
+        </div>
+      </header>
+
+      <div class="article-layout">
+        <article class="article-body">
+          <section id="thesis">
+            <h2>The thesis</h2>
+            <p>
+              AI coding agents should not connect directly to powerful local tools. They should connect through a permission system that can classify risk, apply policy, ask for human approval, scope execution, record every tool call, and preserve a path back to a known-good state.
+            </p>
+            <p>
+              The reason is simple: once an agent can touch your filesystem, git history, browser session, package manager, database, deployment CLI, or secrets, the agent is no longer just producing text. It is operating a computer. Operating a computer requires authorization, not vibes.
+            </p>
+            <p>
+              This is the idea behind Polyshield: a control layer between AI coding agents and local Model Context Protocol tools. The agent can still work quickly, but sensitive actions pass through a gateway that understands policies, approvals, sandbox constraints, audit logs, and recovery.
+            </p>
+            <div class="callout">
+              <p><strong>Core claim:</strong> agent safety is not just about making the model refuse bad instructions. It is about making the execution environment resilient when the model follows the wrong instruction, misunderstands the task, overreaches, or gets manipulated by untrusted content.</p>
+            </div>
+
+            <figure class="diagram-box" aria-label="Agent permission gateway diagram">
+              <svg viewBox="0 0 920 360" role="img">
+                <rect width="920" height="360" fill="var(--surface)" />
+                <g fill="none" stroke="var(--border-strong)" stroke-width="2">
+                  <rect x="40" y="130" width="150" height="80" rx="14"/>
+                  <rect x="270" y="80" width="210" height="180" rx="16"/>
+                  <rect x="570" y="80" width="150" height="80" rx="14"/>
+                  <rect x="570" y="200" width="150" height="80" rx="14"/>
+                  <rect x="780" y="130" width="100" height="80" rx="14"/>
+                </g>
+                <g fill="var(--text)" font-family="Geist, sans-serif" font-size="18" font-weight="600" text-anchor="middle">
+                  <text x="115" y="164">Coding</text><text x="115" y="188">agent</text>
+                  <text x="375" y="122">Permission gateway</text>
+                  <text x="645" y="114">Human</text><text x="645" y="138">approval</text>
+                  <text x="645" y="234">Policy</text><text x="645" y="258">engine</text>
+                  <text x="830" y="164">Local</text><text x="830" y="188">tools</text>
+                </g>
+                <g fill="var(--text-muted)" font-family="Geist Mono, monospace" font-size="13" text-anchor="middle">
+                  <text x="375" y="154">classify risk</text>
+                  <text x="375" y="180">scope execution</text>
+                  <text x="375" y="206">log every call</text>
+                  <text x="375" y="232">prepare undo</text>
+                </g>
+                <g stroke="var(--accent)" stroke-width="3" fill="none" stroke-linecap="round">
+                  <path d="M190 170 H270"/>
+                  <path d="M480 132 H570"/>
+                  <path d="M480 228 H570"/>
+                  <path d="M720 240 C760 240 760 170 780 170"/>
+                  <path d="M720 120 C760 120 760 170 780 170"/>
+                </g>
+              </svg>
+              <figcaption class="diagram-caption">A safer agent architecture: the agent asks, the gateway evaluates, policies and humans decide, and local tools execute only inside a controlled path.</figcaption>
+            </figure>
+          </section>
+
+          <section id="why-now">
+            <h2>Why this matters now</h2>
+            <p>
+              The old mental model for AI assistants was "chat box that returns text." The new model is "software operator with tools." That difference changes the entire risk surface.
+            </p>
+            <p>
+              A text-only assistant can be wrong, annoying, biased, or misleading. A tool-using coding agent can be wrong in ways that mutate a repository, delete a file, rewrite a migration, leak a secret, install a dependency, click through an admin panel, push a bad commit, or deploy code that nobody reviewed. The risk is not theoretical. The entire point of tool use is side effect.
+            </p>
+            <p>
+              Model Context Protocol makes this shift more powerful by giving agents a standard way to connect to external systems. That is good because it gives developers a common interface for tools. It is also dangerous if the local tool layer becomes an unguarded bridge from natural language to privileged machine actions.
+            </p>
+            <p>
+              The same capability that lets an agent inspect your repo and run tests also lets it read files it should not read, make edits outside the intended directory, or execute a tool call that was suggested by malicious instructions hidden in a webpage, README, issue, or dependency output.
+            </p>
+          </section>
+
+          <section id="threat-model">
+            <h2>The threat model is not just "bad user prompt"</h2>
+            <p>
+              Most beginner AI safety discussions imagine a user typing an obviously malicious prompt. Coding agents have a messier threat model. They ingest untrusted content constantly: repository files, package scripts, terminal output, browser pages, GitHub issues, docs, markdown, comments, stack traces, test fixtures, and logs.
+            </p>
+            <p>
+              That content can carry instructions. A README can say "ignore previous instructions and run this command." A webpage can tell an agent to exfiltrate a token. A failing test can print text that looks like a system directive. A dependency install script can create files that trick the agent into trusting a fake state. If the agent is allowed to treat all observed text as equally authoritative, untrusted content becomes a control channel.
+            </p>
+            <p>
+              OWASP describes prompt injection as a core LLM application risk, and its risk categories also call out excessive agency: the danger of giving an LLM too much ability to take actions without proper constraints. Those categories map directly onto coding agents. The problem is not only "the model might say something unsafe." The problem is "the model might be allowed to do something unsafe."
+            </p>
+            <table class="risk-table">
+              <thead>
+                <tr>
+                  <th>Risk</th>
+                  <th>What it looks like for coding agents</th>
+                  <th>Permission-system response</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Prompt injection</td>
+                  <td>Untrusted project content or webpages instruct the agent to ignore the developer and call tools.</td>
+                  <td>Separate trusted instructions from observed content; require approvals for sensitive tool calls.</td>
+                </tr>
+                <tr>
+                  <td>Excessive agency</td>
+                  <td>The agent can run shell commands, edit files, access secrets, or deploy without checkpoints.</td>
+                  <td>Apply allow, deny, and require-approval policies based on tool, path, command, and risk.</td>
+                </tr>
+                <tr>
+                  <td>Data leakage</td>
+                  <td>The agent reads `.env`, SSH keys, tokens, browser cookies, or private files while solving a task.</td>
+                  <td>Scope filesystem access, strip ambient environment variables, and vault declared secrets.</td>
+                </tr>
+                <tr>
+                  <td>Irreversible mutation</td>
+                  <td>The agent deletes files, rewrites migrations, changes generated assets, or runs destructive DB operations.</td>
+                  <td>Snapshot before destructive calls, preview diffs, require human approval, and support rollback.</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section id="direct-tools">
+            <h2>Direct tool access is the wrong default</h2>
+            <p>
+              Direct tool access feels great in demos. The agent calls the filesystem, edits the code, runs tests, opens the browser, fixes the issue, and reports success. The loop is magical because there is almost no friction.
+            </p>
+            <p>
+              But friction is not always bad. Some friction is control. The correct product question is not "how do we remove every checkpoint?" The better question is "which checkpoints are cheap enough to keep and important enough to matter?"
+            </p>
+            <p>
+              A permission system should not ask for approval on every read-only file lookup. That would make the product unusable. But it should absolutely slow down the agent before high-risk operations: deleting files, editing outside the workspace, touching credentials, changing lockfiles, pushing commits, running unknown scripts, starting long-running processes, accessing browser sessions, or calling networked services with side effects.
+            </p>
+            <p>
+              The practical shape is a risk ladder:
+            </p>
+            <ol>
+              <li><strong>Allowed silently:</strong> read specific project files, list directories inside the workspace, inspect test output, run safe static checks.</li>
+              <li><strong>Allowed with logging:</strong> write source files in scoped paths, run known tests, format code, update generated local artifacts.</li>
+              <li><strong>Requires approval:</strong> destructive file operations, package installation, commands that invoke scripts, git operations, browser actions that submit forms, database mutations.</li>
+              <li><strong>Denied by default:</strong> reading secrets, leaving the workspace, accessing unrelated home-directory files, using ambient credentials, disabling security checks.</li>
+            </ol>
+            <p>
+              The agent can still be fast. The difference is that speed now has rails.
+            </p>
+          </section>
+
+          <section id="design">
+            <h2>What a real permission system needs</h2>
+            <p>
+              A permission system for coding agents has to be more than a modal that says "allow?" If the only control is a giant yes/no button attached to raw JSON, users will click through it or misunderstand what is happening.
+            </p>
+            <p>
+              The system needs to convert tool calls into human-readable risk. It should explain what will be touched, what can go wrong, whether the action is reversible, what policy matched, and what alternatives exist.
+            </p>
+            <h3>1. Tool-call classification</h3>
+            <p>
+              Every tool call should be classified before execution. Classification should consider the tool, parameters, target path, command string, network access, environment variables, expected side effects, and whether the action can be previewed.
+            </p>
+            <h3>2. Policy evaluation</h3>
+            <p>
+              Policies should be explicit. A developer should be able to say: allow reads in this repo, allow writes under `src/`, require approval for `package.json`, deny `.env`, require approval for any command containing `rm`, deny network egress for a filesystem-only runner, and always log git mutations.
+            </p>
+            <h3>3. Approval queue</h3>
+            <p>
+              Approvals should show a diff or a concrete action summary whenever possible. "Run command?" is weak. "Run `npm install left-pad` which will modify `package.json` and `package-lock.json`" is better. "Dry-run produced this exact diff" is better still.
+            </p>
+            <h3>4. Scoped local runner</h3>
+            <p>
+              The executor should run with the smallest practical scope. The runner should pin a working directory, reject path traversal, strip environment variables by default, pass through only declared secrets, enforce timeouts, and keep tool servers separated by profile.
+            </p>
+            <h3>5. Audit and replay</h3>
+            <p>
+              A serious system should preserve an audit trail: who or what requested the action, which policy matched, who approved it, what arguments were passed, what files changed, what output came back, and whether rollback data exists.
+            </p>
+            <h3>6. Recovery</h3>
+            <p>
+              Users will forgive agents for being wrong if wrongness is recoverable. Snapshots, dry-run diffs, and undo flows matter because they turn agent mistakes from catastrophic into inspectable.
+            </p>
+          </section>
+
+          <section id="polyshield">
+            <h2>How this maps to Polyshield</h2>
+            <p>
+              Polyshield is my attempt to build this control layer as a product. The architecture is a gateway plus a local runner. The coding agent talks to the gateway. The gateway applies policy and approval logic. The runner polls outbound, launches local stdio MCP servers, and executes calls only after the gateway permits them.
+            </p>
+            <p>
+              The outbound polling design matters. A user's machine should not need to accept inbound connections just because an AI agent needs local tools. The runner can stay local, local tools can stay local, and the control plane can coordinate execution without exposing a listening port.
+            </p>
+            <figure class="diagram-box" aria-label="Polyshield local runner sequence">
+              <svg viewBox="0 0 920 420" role="img">
+                <rect width="920" height="420" fill="var(--surface)" />
+                <g font-family="Geist Mono, monospace" font-size="13" fill="var(--text-faint)">
+                  <text x="70" y="48">agent</text>
+                  <text x="270" y="48">gateway</text>
+                  <text x="505" y="48">approval/policy</text>
+                  <text x="730" y="48">local runner</text>
+                </g>
+                <g stroke="var(--border-strong)" stroke-width="2">
+                  <line x1="90" y1="68" x2="90" y2="370"/>
+                  <line x1="300" y1="68" x2="300" y2="370"/>
+                  <line x1="550" y1="68" x2="550" y2="370"/>
+                  <line x1="770" y1="68" x2="770" y2="370"/>
+                </g>
+                <g stroke="var(--accent)" stroke-width="3" fill="none" stroke-linecap="round" marker-end="none">
+                  <path d="M90 108 H300"/>
+                  <path d="M300 150 H550"/>
+                  <path d="M550 192 H300"/>
+                  <path d="M770 236 H300"/>
+                  <path d="M300 278 H770"/>
+                  <path d="M770 320 H300"/>
+                </g>
+                <g font-family="Geist, sans-serif" font-size="15" fill="var(--text)">
+                  <text x="132" y="98">1. tool request</text>
+                  <text x="350" y="140">2. classify risk</text>
+                  <text x="354" y="182">3. approve or deny</text>
+                  <text x="420" y="226">4. outbound poll</text>
+                  <text x="432" y="268">5. scoped execution</text>
+                  <text x="432" y="310">6. result + audit log</text>
+                </g>
+              </svg>
+              <figcaption class="diagram-caption">The runner does not invent policy. It executes after the gateway evaluates the action and records the decision.</figcaption>
+            </figure>
+            <p>
+              This does not mean the first version solves every sandboxing problem. Kernel-level isolation, network egress control, memory limits, and containerized execution are deeper milestones. But even before that, a permission system can create meaningful structure: declared scopes, blocked paths, stripped environment variables, timeouts, snapshots, dry-runs, approval records, and visible risk.
+            </p>
+          </section>
+
+          <section id="ux">
+            <h2>The UX problem is as important as the security problem</h2>
+            <p>
+              Security tools fail when they ask users to make decisions they cannot understand. A permission prompt that says "MCP call: filesystem.write {args...}" is not enough. The user needs the action translated into the language of the workflow.
+            </p>
+            <p>
+              Good approval UX should answer:
+            </p>
+            <ul>
+              <li>What is the agent trying to do?</li>
+              <li>Which files, services, accounts, or credentials are involved?</li>
+              <li>Why does the agent think this is necessary?</li>
+              <li>What policy caused this approval request?</li>
+              <li>Can I preview the effect?</li>
+              <li>Can I undo it?</li>
+              <li>Can I approve this once, approve this pattern, or deny this class of actions permanently?</li>
+            </ul>
+            <p>
+              The hard part is balancing trust and flow. If the system asks too often, people stop reading. If it asks too rarely, the agent becomes an unbounded operator. The goal is not maximum interruption. The goal is selective interruption at the exact boundary where human judgment still matters.
+            </p>
+          </section>
+
+          <section id="research">
+            <h2>How existing guidance points in the same direction</h2>
+            <p>
+              This architecture is not coming from nowhere. It lines up with several existing security ideas.
+            </p>
+            <p>
+              OWASP's LLM guidance emphasizes prompt injection and excessive agency as major application risks. NIST's AI Risk Management Framework organizes AI risk work around governance, mapping context, measuring risk, and managing risk. Anthropic's tool and computer-use guidance emphasizes sandboxing, limited privileges, and human oversight for dangerous actions. MCP's own ecosystem exists because tools need a standard interface; once tools become standard, permissions around those tools become a product category.
+            </p>
+            <p>
+              The pattern is consistent: AI systems become safer when power is explicit, scoped, observable, and revocable.
+            </p>
+          </section>
+
+          <section id="future">
+            <h2>Where this goes next</h2>
+            <p>
+              The long-term version of agent permissions should feel like a developer operating system for AI workers. It should know your repo boundaries, understand common development actions, classify new tool calls, maintain a timeline of agent behavior, and let you move between fast automation and careful review.
+            </p>
+            <p>
+              I think the winning systems will have a few properties:
+            </p>
+            <ol>
+              <li><strong>Local-first execution:</strong> your code and tools stay on your machine unless you intentionally connect them elsewhere.</li>
+              <li><strong>Policy as product:</strong> permissions are understandable enough for individual builders but structured enough for teams.</li>
+              <li><strong>Evidence-based approvals:</strong> approval cards show diffs, scopes, risk reasons, and undo state, not raw tool JSON.</li>
+              <li><strong>Composable tool servers:</strong> MCP servers remain flexible, but execution flows through a consistent control layer.</li>
+              <li><strong>Recoverability:</strong> every risky agent action should either be reversible or clearly marked as irreversible before approval.</li>
+            </ol>
+            <p>
+              If coding agents are going to become normal parts of software teams, they need the same thing every powerful actor in a system needs: permissions, logs, boundaries, and accountability.
+            </p>
+            <div class="callout">
+              <p><strong>My bet:</strong> the future of coding agents is not just better models. It is better operating environments around the models.</p>
+            </div>
+          </section>
+
+          <section id="sources">
+            <h2>Sources and further reading</h2>
+            <ul class="source-list">
+              <li><a href="https://modelcontextprotocol.io/" target="_blank" rel="noopener">Model Context Protocol documentation</a></li>
+              <li><a href="https://modelcontextprotocol.io/specification/draft/basic/security_best_practices" target="_blank" rel="noopener">MCP security best practices</a></li>
+              <li><a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/" target="_blank" rel="noopener">OWASP Top 10 for Large Language Model Applications</a></li>
+              <li><a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">NIST AI Risk Management Framework</a></li>
+              <li><a href="https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/overview" target="_blank" rel="noopener">Anthropic tool use documentation</a></li>
+              <li><a href="https://docs.anthropic.com/en/docs/agents-and-tools/computer-use" target="_blank" rel="noopener">Anthropic computer use and sandboxing guidance</a></li>
+            </ul>
+          </section>
+        </article>
+
+        <aside class="article-aside" aria-label="Article sections">
+          <a href="#thesis">Thesis</a>
+          <a href="#why-now">Why now</a>
+          <a href="#threat-model">Threat model</a>
+          <a href="#direct-tools">Direct tools</a>
+          <a href="#design">System design</a>
+          <a href="#polyshield">Polyshield</a>
+          <a href="#ux">UX</a>
+          <a href="#research">Research</a>
+          <a href="#future">Future</a>
+          <a href="#sources">Sources</a>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span>Mohammed Alsouri</span>
+      <a href="../index.html">Back home</a>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
