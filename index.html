@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,12 +13,12 @@
   <meta property="og:type" content="profile" />
   <!-- Add assets/og-image.png later for link previews. Recommended size: 1200 x 630. -->
 
-  <meta name="theme-color" content="#f8f7ff" />
+  <meta name="theme-color" content="#17130d" />
 
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;450;500;600;700;800&family=Geist+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesque:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 
@@ -26,7 +26,7 @@
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="nav" id="top">
-    <div class="container nav__inner">
+    <div class="nav__inner">
       <nav class="nav__links" aria-label="Primary">
         <a href="#work">Work</a>
         <a href="#impact">Impact</a>
@@ -35,17 +35,9 @@
         <a href="#timeline">Timeline</a>
         <a href="#contact">Contact</a>
       </nav>
-
-      <div class="nav__actions">
-        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle color theme" title="Toggle theme">
-          <svg class="theme-toggle__sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><g stroke-linecap="round"><line x1="12" y1="2.5" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="21.5"/><line x1="2.5" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="21.5" y2="12"/><line x1="5.1" y1="5.1" x2="6.9" y2="6.9"/><line x1="17.1" y1="17.1" x2="18.9" y2="18.9"/><line x1="18.9" y1="5.1" x2="17.1" y2="6.9"/><line x1="6.9" y1="17.1" x2="5.1" y2="18.9"/></g></svg>
-          <svg class="theme-toggle__moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M20 14.2A8 8 0 1 1 9.8 4 6.4 6.4 0 0 0 20 14.2Z"/></svg>
-        </button>
-        <a class="nav__contact" href="mailto:maofficial2009@gmail.com">Email</a>
-        <button class="nav__menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
+      <button class="nav__menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
 
     <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile">
@@ -62,28 +54,32 @@
     <section class="hero">
       <div class="container hero__inner">
         <div class="hero__text reveal">
-          <p class="hero__role">Student builder working on agent safety, community software, UI systems, games, and engineering.</p>
-          <div class="hero__identity">
-            <h1>Mohammed Alsouri</h1>
-            <figure class="portrait-frame">
-              <img src="assets/portrait.jpg" alt="Portrait of Mohammed Alsouri" onerror="this.closest('figure').classList.add('is-missing')" />
-            </figure>
-          </div>
+          <p class="hero__role">Student builder — agent safety, community software, UI systems, games &amp; math</p>
+          <h1 class="hero__name">Mohammed <em>Alsouri</em></h1>
           <p class="hero__lede">
             I build across the stack when a problem is interesting enough: local MCP infrastructure for AI coding agents, an Expo care platform for a community nonprofit, Java UI tooling, games, electronics projects, and math explanations. My projects are scattered because I follow the hard parts until they turn into working software.
           </p>
           <div class="hero__actions">
             <a class="btn btn--primary" href="#work">Read the work</a>
             <a class="btn" href="https://github.com/omgbroops" target="_blank" rel="noopener">GitHub</a>
-            <a class="btn" href="mailto:maofficial2009@gmail.com">Email</a>
+            <a class="btn btn--ghost" href="mailto:maofficial2009@gmail.com">Email</a>
           </div>
+          <dl class="hero__stats">
+            <div><dt>Building since</dt><dd>2020</dd></div>
+            <div><dt>Now</dt><dd>Polyshield · MCP gateway</dd></div>
+            <div><dt>Recent</dt><dd>Pumps &amp; Pipes — Grand Winner</dd></div>
+          </dl>
         </div>
 
-        <aside class="hero-panel reveal" aria-label="Current build">
-          <div class="panel-chrome">
-            <span></span><span></span><span></span>
-          </div>
-          <pre><code>agent.request({
+        <div class="hero__side reveal">
+          <!-- Portrait. Drop assets/portrait.jpg to fill it; otherwise a clean placeholder shows. -->
+          <figure class="portrait-frame">
+            <img src="assets/portrait.png" alt="Portrait of Mohammed Alsouri" onerror="this.closest('figure').classList.add('is-missing')" />
+          </figure>
+
+          <aside class="hero-panel" aria-label="Current build">
+            <div class="panel-chrome"><span></span><span></span><span></span></div>
+            <pre><code>agent.request({
   tool: "filesystem.write",
   target: "~/repo",
   risk: "destructive"
@@ -94,11 +90,12 @@ polyshield.evaluate({
   sandbox: "scoped runner",
   audit: true
 })</code></pre>
-          <dl class="panel-proof">
-            <div><dt>Focus</dt><dd>AI agents with permissions</dd></div>
-            <div><dt>Build</dt><dd>MCP gateway + local runner</dd></div>
-          </dl>
-        </aside>
+            <dl class="panel-proof">
+              <div><dt>Focus</dt><dd>AI agents with permissions</dd></div>
+              <div><dt>Build</dt><dd>MCP gateway + local runner</dd></div>
+            </dl>
+          </aside>
+        </div>
       </div>
     </section>
 
@@ -151,8 +148,38 @@ polyshield.evaluate({
               <a class="link-arrow" href="https://github.com/omgbroops/JSwingX" target="_blank" rel="noopener">View on GitHub</a>
             </div>
           </div>
-          <figure class="project__media">
-            <img src="assets/jswingx-ui.png" alt="JSwingX interface screenshot" onerror="this.closest('figure').classList.add('is-missing')" />
+          <figure class="project__media project__media--diagram" aria-label="JSwingX scene-graph hierarchy: a UIPanel root holds a UIElement base that branches into UIFrame, UIImage, UIText, and UITextBox primitives, with Dim2 sizing, anchors, tweens, and layouts.">
+            <svg class="fw" viewBox="0 0 480 360" role="img">
+              <text class="fw-tl" x="22" y="30">UI SCENE GRAPH</text>
+              <g class="fw-edge">
+                <line x1="240" y1="86" x2="240" y2="116"/>
+                <line x1="240" y1="158" x2="240" y2="186"/>
+                <line x1="70" y1="186" x2="410" y2="186"/>
+                <line x1="70" y1="186" x2="70" y2="210"/>
+                <line x1="183" y1="186" x2="183" y2="210"/>
+                <line x1="297" y1="186" x2="297" y2="210"/>
+                <line x1="410" y1="186" x2="410" y2="210"/>
+              </g>
+              <g>
+                <rect class="fw-node fw-node--root" x="185" y="44" width="110" height="42" rx="11"/>
+                <text class="fw-lbl" x="240" y="70">UIPanel</text>
+              </g>
+              <g>
+                <rect class="fw-node" x="178" y="116" width="124" height="42" rx="11"/>
+                <text class="fw-lbl" x="240" y="142">UIElement</text>
+              </g>
+              <g>
+                <rect class="fw-node" x="22" y="210" width="96" height="44" rx="10"/>
+                <text class="fw-lbl" x="70" y="237">UIFrame</text>
+                <rect class="fw-node" x="135" y="210" width="96" height="44" rx="10"/>
+                <text class="fw-lbl" x="183" y="237">UIImage</text>
+                <rect class="fw-node" x="249" y="210" width="96" height="44" rx="10"/>
+                <text class="fw-lbl" x="297" y="237">UIText</text>
+                <rect class="fw-node" x="362" y="210" width="96" height="44" rx="10"/>
+                <text class="fw-lbl" x="410" y="237">UITextBox</text>
+              </g>
+              <text class="fw-tag" x="240" y="300">scale / offset · anchors · tweens · layouts · rich text</text>
+            </svg>
           </figure>
         </article>
 
@@ -192,6 +219,10 @@ polyshield.evaluate({
             <p>
               I am building and supporting the CareCompass app and website while helping with outreach. The product work connects the nonprofit's offline distribution to online workflows: events, volunteer signups, resource discovery, announcements, admin tools, and an AI health companion prototype.
             </p>
+            <dl class="project__stats">
+              <div><dt>raised, net</dt><dd>$1,000+</dd></div>
+              <div><dt>care boxes distributed</dt><dd>Hundreds</dd></div>
+            </dl>
             <ul class="evidence-list">
               <li>Built an Expo mobile app with a web export path for Vercel.</li>
               <li>Added event discovery, saved resources, volunteer shifts, signups, announcements, privacy copy, and founder/admin views.</li>
@@ -199,7 +230,8 @@ polyshield.evaluate({
               <li>Supporting an organization that distributes free care boxes with first aid supplies, OTC medication, and health information.</li>
             </ul>
             <div class="project__links">
-              <a class="link-arrow" href="https://carecompassonline.org/" target="_blank" rel="noopener">Visit CareCompass</a>
+              <a class="link-arrow" href="https://website-mocha-omega.vercel.app/" target="_blank" rel="noopener">Visit CareCompass</a>
+              <a class="link-arrow" href="https://instagram.com/carecompassofficial" target="_blank" rel="noopener">Instagram</a>
               <a class="link-arrow" href="https://github.com/omgbroops/carecompass" target="_blank" rel="noopener">App repo</a>
             </div>
           </div>
@@ -218,27 +250,53 @@ polyshield.evaluate({
           <p>Some of my best work comes from crossing software with math, chemistry, electronics, and explanation.</p>
         </header>
 
-        <div class="split-grid">
-          <article class="text-card reveal">
-            <h3>I Dislike L'Hopital</h3>
+        <article class="project reveal" id="math">
+          <div class="project__body">
+            <p class="project__type">Math / teaching</p>
+            <h3>Math Enthusiast</h3>
+            <p class="project__subtitle">Teaching calculus through short, intuition-first explanations.</p>
             <p>
-              I run a calculus-focused Instagram where I post short explanations, examples, and intuition for limits, derivatives, integrals, and the parts of math that usually get taught too mechanically.
+              I run a calculus-focused project where I post short explanations, worked examples, and the intuition behind limits, derivatives, integrals, and series — the parts of math that usually get taught too mechanically. It is where I practice turning a hard idea into something that actually clicks.
             </p>
-            <a class="link-arrow" href="https://instagram.com/idislikelhopital" target="_blank" rel="noopener">@idislikelhopital</a>
-          </article>
+            <ul class="evidence-list">
+              <li>Break down calculus concepts into short, visual, intuition-first lessons.</li>
+              <li>Focus on why the math works, not just the steps to follow.</li>
+              <li>Treat explanation as a design problem: clarity, pacing, and the right example.</li>
+            </ul>
+            <div class="project__links">
+              <a class="link-arrow" href="https://instagram.com/idislikelhopital" target="_blank" rel="noopener">@idislikelhopital</a>
+            </div>
+          </div>
+          <figure class="project__media project__media--reel">
+            <video class="reel" autoplay loop muted playsinline preload="metadata"
+                   disablepictureinpicture poster="assets/math-enthusiast.jpg"
+                   aria-label="Calculus explainer: Laplace transform of a differential equation">
+              <source src="assets/math-enthusiast.mp4" type="video/mp4" />
+            </video>
+          </figure>
+        </article>
 
-          <article class="text-card reveal">
+        <article class="project reveal" id="pumps-pipes">
+          <div class="project__body">
+            <p class="project__type">Chemistry / electronics / robotics</p>
             <h3>Pumps &amp; Pipes</h3>
+            <p class="project__subtitle">Grand Winner — an RC ChemE car combining chemistry, electronics, and robotics.</p>
             <p>
-              Grand Winner for an RC ChemE car combining chemistry, electronics, and robotics. My team built a vehicle that used an iodine clock reaction as part of its stopping mechanism: once the reaction changed visually, a photoresistor/light-detection circuit picked up the change and fed the control system that stopped the motors.
+              My team built an RC ChemE car that used an iodine clock reaction as part of its stopping mechanism: once the reaction changed visually, a photoresistor / light-detection circuit picked up the change and fed the control system that stopped the motors. I worked on the electronics, programming, motors, sensors, and debugging.
             </p>
             <ul class="evidence-list">
               <li>Worked on the electronics, programming, motors, sensors, and debugging.</li>
               <li>Integrated chemistry, hardware, and code under competition constraints.</li>
               <li>Iterated through noisy sensor readings, timing uncertainty, and mechanical reliability issues.</li>
             </ul>
-          </article>
-        </div>
+            <div class="project__links">
+              <a class="link-arrow" href="https://pumpsandpipes.org" target="_blank" rel="noopener">pumpsandpipes.org</a>
+            </div>
+          </div>
+          <figure class="project__media">
+            <img src="assets/pumps-pipes.jpg" alt="RC ChemE car and circuitry" onerror="this.closest('figure').classList.add('is-missing')" />
+          </figure>
+        </article>
       </div>
     </section>
 
@@ -285,7 +343,14 @@ polyshield.evaluate({
             </div>
           </li>
           <li class="timeline__item reveal">
-            <div class="timeline__year">2025-2026</div>
+            <div class="timeline__year">2026</div>
+            <div class="timeline__content">
+              <h3>Pumps &amp; Pipes</h3>
+              <p>Grand Winner for an RC ChemE car built across chemistry, electronics, programming, sensors, and motor control.</p>
+            </div>
+          </li>
+          <li class="timeline__item reveal">
+            <div class="timeline__year">2026</div>
             <div class="timeline__content">
               <h3>CareCompass</h3>
               <p>Built web and app workflows for a community care nonprofit, with resource discovery, volunteers, events, admin views, and privacy/security planning.</p>
@@ -296,13 +361,6 @@ polyshield.evaluate({
             <div class="timeline__content">
               <h3>Polyshield</h3>
               <p>Started building a control layer for AI coding agents and local MCP tools.</p>
-            </div>
-          </li>
-          <li class="timeline__item reveal">
-            <div class="timeline__year">2026</div>
-            <div class="timeline__content">
-              <h3>Pumps &amp; Pipes</h3>
-              <p>Grand Winner for an RC ChemE car built across chemistry, electronics, programming, sensors, and motor control.</p>
             </div>
           </li>
         </ol>
